@@ -34,6 +34,7 @@ app.use("/api/leave", LeaveRoutes)
 app.use("/api/auth",authRoutes)
 
 
+console.log("fsdfh");
 
 
 connectDB()
