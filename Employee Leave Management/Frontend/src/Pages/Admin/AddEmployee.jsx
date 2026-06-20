@@ -28,37 +28,48 @@ const AddEmployee = () => {
     e.preventDefault();
 
     try {
+      if (!formData.image) {
+        return alert("Please select an image");
+      }
+
       const employeeData = new FormData();
 
-      employeeData.append("name", formData.name);
-      employeeData.append("email", formData.email);
-      employeeData.append("password", formData.password);
-      employeeData.append("phone", formData.phone);
-      employeeData.append("department", formData.department);
-      employeeData.append("joinDate", formData.joinDate);
-      employeeData.append("salary", formData.salary);
-
-      employeeData.append("image", formData.image);
+      Object.entries(formData).forEach(([key, value]) => {
+        employeeData.append(key, value);
+      });
 
       const response = await axios.post(
-        "https://employee-leave-management-6clu.onrender.com/api/employees/add",
+        `  https://employee-leave-management-6clu.onrender.com/api/employees/add`,
         employeeData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        },
       );
 
       if (response.data.success) {
         alert("Employee added successfully");
 
+        setFormData({
+          name: "",
+          email: "",
+          password: "",
+          phone: "",
+          department: "",
+          joinDate: "",
+          salary: "",
+          image: null,
+        });
+
         navigate("/admin/admin-employee");
-      } else {
-        alert(response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
 
-      alert("Something went wrong");
+      alert(error.response?.data?.message || "Failed to add employee");
     }
   };
-
   return (
     <div className="min-h-screen bg-gray-100 flex justify-center items-start py-10">
       <div className="bg-white w-full max-w-4xl p-8 rounded-2xl shadow-xl">

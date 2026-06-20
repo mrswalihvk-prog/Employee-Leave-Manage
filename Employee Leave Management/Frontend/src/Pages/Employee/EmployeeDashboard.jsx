@@ -13,7 +13,7 @@ const EmployeeDashboard = () => {
     try {
 
       const response = await axios.get(
-        `https://employee-leave-management-6clu.onrender.com/api/leave/employee/${user._id}`
+        `  https://employee-leave-management-6clu.onrender.com/api/leave/employee/${user._id}`
       )
 
       setLeaves(response.data)

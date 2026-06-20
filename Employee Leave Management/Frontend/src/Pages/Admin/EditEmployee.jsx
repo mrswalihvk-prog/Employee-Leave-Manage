@@ -25,7 +25,7 @@ const EditEmployee = () =>  {
     try {
 
       const response = await axios.get(
-        `https://employee-leave-management-6clu.onrender.com/api/employees/getspeci/${id}`
+        `  https://employee-leave-management-6clu.onrender.com/api/employees/getspeci/${id}`
       )
 
       setFormData({
@@ -77,7 +77,7 @@ const EditEmployee = () =>  {
 
     try {
 
-      await axios.put(`https://employee-leave-management-6clu.onrender.com/api/employees/update/${id}`,formData)
+      await axios.put(`  https://employee-leave-management-6clu.onrender.com/api/employees/update/${id}`,formData)
 
       navigate("/admin/admin-employee")
 

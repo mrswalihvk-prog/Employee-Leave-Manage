@@ -9,7 +9,7 @@ const Employees = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await axios.get("https://employee-leave-management-6clu.onrender.com/api/employees/getemp");
+      const response = await axios.get("  https://employee-leave-management-6clu.onrender.com/api/employees/getemp");
 
       setEmployees(response.data);
     } catch (error) {
@@ -23,7 +23,7 @@ const Employees = () => {
 
   const deleteEmployee = async (id) => {
     try {
-      await axios.delete(`https://employee-leave-management-6clu.onrender.com/api/employees/delete/${id}`);
+      await axios.delete(`  https://employee-leave-management-6clu.onrender.com/api/employees/delete/${id}`);
 
       fetchEmployees();
     } catch (error) {
@@ -71,7 +71,7 @@ const Employees = () => {
                   {/* Avatar */}
                   {/* Employee Image */}
                   <img
-                    src={`https://employee-leave-management-1-4xmq.onrender.com/uploads/${employee.image}`}
+                    src={`  https://employee-leave-management-6clu.onrender.com/uploads/${employee.image}`}
                     alt={employee.name}
                     className="w-10 h-10 rounded-full object-cover border"
                   />

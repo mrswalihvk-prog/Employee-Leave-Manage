@@ -10,11 +10,31 @@ export const addEmployee = async (req, res) => {
       phone,
       department,
       designation,
+      joinDate,
       salary,
       role,
     } = req.body;
+  
+  
+    
 
-    // Check image upload
+    // required check
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !phone ||
+      !department ||
+      !joinDate ||
+      !salary
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "All fields are required",
+      });
+    }
+
+    // image check
     if (!req.file) {
       return res.status(400).json({
         success: false,
@@ -22,8 +42,10 @@ export const addEmployee = async (req, res) => {
       });
     }
 
-    // Check existing employee
-    const employeeExists = await Employee.findOne({ email });
+    // duplicate email
+    const employeeExists = await Employee.findOne({
+      email,
+    });
 
     if (employeeExists) {
       return res.status(409).json({
@@ -32,33 +54,45 @@ export const addEmployee = async (req, res) => {
       });
     }
 
-    // Hash password
+    // hash password
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Create employee
     const employee = await Employee.create({
       name,
+
       email,
+
       password: hashedPassword,
+
       phone,
+
       department,
+
       designation,
+
+      joinDate: new Date(joinDate),
+
       salary,
-      role,
+
+      role: role || "employee",
+
       image: req.file.filename,
     });
 
     return res.status(201).json({
       success: true,
+
       message: "Employee added successfully",
+
       employee,
     });
   } catch (error) {
-    console.error("Add Employee Error:", error);
+    console.log("Add Employee Error:", error);
 
     return res.status(500).json({
       success: false,
-      message: error.message || "Something went wrong",
+
+      message: error.message,
     });
   }
 };
