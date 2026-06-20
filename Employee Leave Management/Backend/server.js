@@ -43,6 +43,7 @@ app.use("/api/employees", employeeRoutes);
 app.use("/api/leave", LeaveRoutes);
 app.use("/api/auth", authRoutes);
 
+
 connectDB();
 
 app.listen(PORT, () => {
