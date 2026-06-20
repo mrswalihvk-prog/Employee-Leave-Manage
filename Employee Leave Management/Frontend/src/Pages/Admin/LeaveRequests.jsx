@@ -12,7 +12,7 @@ const LeaveRequests = () => {
     try {
 
       const response = await axios.get(
-        "  https://employee-leave-management-6clu.onrender.com/api/leave/all"
+        "  https://employee-leave-manage.onrender.com/api/leave/all"
       )
 
       setLeaves(response.data)
@@ -36,7 +36,7 @@ const LeaveRequests = () => {
     try {
 
       await axios.put(
-        `  https://employee-leave-management-6clu.onrender.com/api/leave/status/${id}`,
+        `  https://employee-leave-manage.onrender.com/api/leave/status/${id}`,
         { status }
       )
 

@@ -26,7 +26,7 @@ function Login() {
     try {
 
       const response = await axios.post(
-        "  https://employee-leave-management-6clu.onrender.com/api/auth/login",
+        "  https://employee-leave-manage.onrender.com/api/auth/login",
         formData
       )
 

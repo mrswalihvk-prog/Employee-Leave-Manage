@@ -39,7 +39,7 @@ const AddEmployee = () => {
       });
 
       const response = await axios.post(
-        `  https://employee-leave-management-6clu.onrender.com/api/employees/add`,
+        `  https://employee-leave-manage.onrender.com/api/employees/add`,
         employeeData,
         {
           headers: {
