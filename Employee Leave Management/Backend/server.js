@@ -34,6 +34,7 @@ app.use("/api/leave", LeaveRoutes)
 app.use("/api/auth",authRoutes)
 
 
+
 connectDB()
 
 app.listen(PORT, () => {console.log(`Server is running on port ${PORT}`)})
